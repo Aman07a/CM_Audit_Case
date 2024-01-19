@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Log;
 
 class DatabaseSeeder extends Seeder
 {
@@ -20,5 +21,15 @@ class DatabaseSeeder extends Seeder
                     ->count(1)
             )
             ->create();
+
+        // Update progress percentage for each customer
+        \App\Models\Customer::all()->each(function ($customer) {
+            try {
+                $customer->updateProgressPercentage();
+            } catch (\Exception $e) {
+                // Log the error using the logger helper function
+                Log::error('Exception caught: ' . $e->getMessage());
+            }
+        });
     }
 }
