@@ -13,6 +13,8 @@ class Audit extends Model
     use HasFactory;
 
     protected $fillable = [
+        'user_id',
+        'customer_id',
         'name',
         'question_progress_percentage'
     ];

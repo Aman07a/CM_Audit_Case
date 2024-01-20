@@ -18,11 +18,20 @@
         @livewire('audit-table')
 
         <!-- Include the AddAudit Livewire component -->
-        @livewire('add-audit', ['audit' => new \App\Models\Audit()])
+        @livewire('add-audit')
     </div>
 
     <!-- Livewire scripts -->
     @livewireScripts
+
+    @push('scripts')
+        <script>
+            Livewire.on('auditAdded', () => {
+                // Perform any JavaScript actions you want to execute after the audit is added
+                console.log('Audit added successfully!');
+            });
+        </script>
+    @endpush
 </body>
 
 </html>
