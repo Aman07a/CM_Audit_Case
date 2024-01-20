@@ -10,6 +10,10 @@
 <body>
 
     <div>
+        @livewire('user-table')
+        @livewire('customer-table')
+        @livewire('audit-table')
+
         <!-- Include the AddAudit Livewire component -->
         @livewire('add-audit', ['audit' => new \App\Models\Audit()])
     </div>
