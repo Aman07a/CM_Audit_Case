@@ -12,6 +12,11 @@ class Audit extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'name',
+        'question_progress_percentage'
+    ];
+
     public function customer()
     {
         return $this->belongsTo(Customer::class);
